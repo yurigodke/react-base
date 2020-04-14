@@ -1,0 +1,15 @@
+.inputBox {
+  display: block;
+  margin-bottom: 20px;
+
+  &__label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  &__input {
+    height: 30px;
+    border: 1px #333 solid;
+    border-radius: 5px;
+  }
+}

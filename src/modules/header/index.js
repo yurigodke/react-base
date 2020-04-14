@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import style from "./index.module.scss";
+
 function Header({ title }) {
-  return (
-    <>
-      <div>{title}</div>
-    </>
-  );
+  return <h1 className={style["title"]}>{title}</h1>;
 }
 
 Header.propTypes = {

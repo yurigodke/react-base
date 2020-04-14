@@ -1,13 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import style from "./index.module.scss";
+
 function Input({ label, type }) {
-  const labelElm = label ? <span>{label}</span> : null;
+  const labelElm = label ? (
+    <span className={style["inputBox__label"]}>{label}</span>
+  ) : null;
 
   return (
-    <label>
+    <label className={style["inputBox"]}>
       {labelElm}
-      <input type={type} />
+      <input className={style["inputBox__input"]} type={type} />
     </label>
   );
 }
