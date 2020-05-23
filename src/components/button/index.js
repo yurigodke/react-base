@@ -3,8 +3,12 @@ import PropTypes from "prop-types";
 
 import style from "./index.module.scss";
 
-function Button({ children }) {
-  return <button className={style["button"]}>{children}</button>;
+function Button({ children, action = () => {} }) {
+  return (
+    <button className={style["button"]} onClick={action}>
+      {children}
+    </button>
+  );
 }
 
 Button.propTypes = {

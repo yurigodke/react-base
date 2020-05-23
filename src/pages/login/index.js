@@ -7,12 +7,29 @@ import { withRouter } from "react-router-dom";
 
 import { FormLogin, Header } from "../../modules";
 
+import { actionLogin } from "../../redux/actions";
+
+import { Auth } from "../../utils";
+
 class Login extends PureComponent {
+  componentDidUpdate(prevProps) {
+    const { tokenData } = this.props;
+
+    if (Auth.checkAuth(tokenData, 1)) {
+      // history.replace("/inicio");
+      console.log("logado");
+    }
+  }
+
+  submitAction = (email, pass) => {
+    this.props.getToken(email, pass);
+  };
+
   render() {
     return (
       <>
         <Header title="Título página" />
-        <FormLogin submitLabel="Enviar" />
+        <FormLogin submitLabel="Enviar" submitAction={this.submitAction} />
       </>
     );
   }
@@ -24,7 +41,8 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDisptachToProps = dispatch => bindActionCreators({}, dispatch);
+const mapDisptachToProps = dispatch =>
+  bindActionCreators({ ...actionLogin }, dispatch);
 
 export default connect(
   mapStateToProps,

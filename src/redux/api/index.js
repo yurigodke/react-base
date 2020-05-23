@@ -2,9 +2,7 @@ class API {
   constructor(token = null) {
     this.token = token;
     if (window.location.hostname === "localhost") {
-      this.baseUrl = "http://156.0.0.3/api";
-    } else {
-      this.baseUrl = "/api";
+      this.baseUrl = "http://156.0.0.3";
     }
 
     this.headers = {

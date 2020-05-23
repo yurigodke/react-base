@@ -4,13 +4,49 @@ import PropTypes from "prop-types";
 import { Input, Button } from "../../components";
 
 class FormLogin extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      pass: ""
+    };
+  }
+
+  setValue = (label, value) => {
+    this.setState({
+      [label]: value
+    });
+  };
+
+  submit = () => {
+    const { submitAction } = this.props;
+    const { email, pass } = this.state;
+
+    if (submitAction) {
+      submitAction(email, pass);
+    }
+  };
+
   render() {
     const { submitLabel } = this.props;
+    const { email, pass } = this.state;
+
     return (
       <>
-        <Input type="text" label="Email" />
-        <Input type="password" label="Senha" />
-        <Button>{submitLabel}</Button>
+        <Input
+          type="text"
+          label="Email"
+          value={email}
+          onChange={value => this.setValue("email", value)}
+        />
+        <Input
+          type="password"
+          label="Senha"
+          value={pass}
+          onChange={value => this.setValue("pass", value)}
+        />
+        <Button action={this.submit}>{submitLabel}</Button>
       </>
     );
   }
