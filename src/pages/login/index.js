@@ -1,5 +1,10 @@
 import React, { PureComponent } from "react";
 
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+import { withRouter } from "react-router-dom";
+
 import { FormLogin, Header } from "../../modules";
 
 class Login extends PureComponent {
@@ -13,4 +18,15 @@ class Login extends PureComponent {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    tokenData: state.login.tokenData
+  };
+};
+
+const mapDisptachToProps = dispatch => bindActionCreators({}, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDisptachToProps
+)(withRouter(Login));
