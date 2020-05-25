@@ -5,30 +5,26 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router-dom";
 
-import { FormLogin, Header } from "../../modules";
+import { Header } from "../../modules";
 
-import { actionLogin } from "../../redux/actions";
+// import { actionLogin } from "../../redux/actions";
 
 import { Auth } from "../../utils";
 
 class Login extends PureComponent {
-  componentDidUpdate(prevProps) {
-    const { tokenData, history } = this.props;
+  constructor(props) {
+    super(props);
+    const { tokenData, history } = props;
 
-    if (Auth.checkAuth(tokenData, 1)) {
-      history.replace("/inicio");
+    if (!Auth.checkAuth(tokenData, 1)) {
+      history.replace("/");
     }
   }
-
-  submitAction = (email, pass) => {
-    this.props.getToken(email, pass);
-  };
 
   render() {
     return (
       <>
         <Header title="Título página" />
-        <FormLogin submitLabel="Enviar" submitAction={this.submitAction} />
       </>
     );
   }
@@ -40,8 +36,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDisptachToProps = dispatch =>
-  bindActionCreators({ ...actionLogin }, dispatch);
+const mapDisptachToProps = dispatch => bindActionCreators({}, dispatch);
 
 export default connect(
   mapStateToProps,

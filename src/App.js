@@ -3,7 +3,7 @@ import style from "./App.module.scss";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Login } from "./pages";
+import { Login, Inicio } from "./pages";
 
 const Container = ({ children }) => {
   return (
@@ -20,6 +20,11 @@ function App() {
         <Route exact path="/">
           <Container>
             <Login />
+          </Container>
+        </Route>
+        <Route exact path="/inicio">
+          <Container>
+            <Inicio />
           </Container>
         </Route>
       </Switch>
