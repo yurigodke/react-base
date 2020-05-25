@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+
+  &__left {
+    width: 300px;
+  }
+
+  &__right {
+    width: 900px;
+  }
+}

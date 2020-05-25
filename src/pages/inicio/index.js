@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router-dom";
 
-import { Header } from "../../modules";
+import { Header, Main, SideBar } from "../../modules";
 
 // import { actionLogin } from "../../redux/actions";
 
@@ -25,6 +25,7 @@ class Login extends PureComponent {
     return (
       <>
         <Header title="Título página" />
+        <Main left={<SideBar />} />
       </>
     );
   }
